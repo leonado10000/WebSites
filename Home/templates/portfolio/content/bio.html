@@ -1,0 +1,91 @@
+{% load static %}
+
+<style>
+    #forIMG{
+        height: 400px;
+        margin-top: 30px;
+        margin-left: 100px;
+    }
+    #forIMG img{
+        height: 500px;
+        /* border: 2px dotted sienna; */
+        border-bottom-left-radius: 20%;
+        border-bottom-right-radius: 20%;
+    }
+    #forContent{
+        -webkit-text-fill-color: rgb(241, 246, 249);
+        margin-top: -30px;
+        height: 500px;
+        width: 700px;
+        margin-left: 150px;
+        border-bottom: 10px solid rgb(14, 18, 26) ;
+        background-color: rgb(57, 72, 103);
+        border-bottom-left-radius: 20%;
+        border-bottom-right-radius: 20%;
+    }
+    #forContent-name{
+        margin-left: 50px;
+        margin-top: 40px;
+        height: 60px;
+        width: 600px;
+        /* border-radius: 50px; */
+        background-color: rgb(33, 42, 62);
+        display: grid;
+    }
+    #forContent-name-name{
+        font-size: 30px;
+        margin-top: 10px;
+        margin-left: 200px;
+        background-color: transparent;
+    }
+    #forContent-content{
+        margin-top: 20px;
+        margin-left: 50px;
+        border-bottom-right-radius: 80px;
+        border-bottom-left-radius: 80px;
+        background-color: rgb(33, 42, 62);
+        height: 340px;
+        width: 600px;
+        display: grid;
+    }
+    #forContent-content-content{
+        padding-left: 20px;
+        line-height: 30px;
+        height: 300px;
+        margin-top: 10px;
+        margin-left: 10px;
+        width: 580px;
+    }
+</style>
+
+<div id="forIMG">
+    <img src="{% static 'JennieKim.jpg' %}" alt="">
+    <!-- <img src="{% static 'me_and_manisha.jpg' %}" alt=""> -->
+    <!-- <img src="{% static 'Risotto_Nero.jpg' %}" alt=""> -->
+</div>
+<div id="forContent">
+    <div id="forContent-name">
+        <div id="forContent-name-name">
+            RAHUL  JANGRA    
+        </div>
+    </div>
+    <div id="forContent-content">
+        <div id="forContent-content-content">
+            " I'm a college sophmore Interesteed in AI, ML and Data Science <br>
+            On the side I also like to work on webProjects/WebApps/WevDev what have you <br>
+            although I feel I'm not very artistic on front end, my backend + working knowledge allows me deploy+ maintain a basic funtional website "<br>
+            <!-- <table>
+                <thead>
+                    <th>
+                        name
+                    </th>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Rahul Jangra</td>
+                    </tr>
+                </tbody>
+            </table> -->
+        </div>
+    </div>
+</div>

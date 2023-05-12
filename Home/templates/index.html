@@ -1,0 +1,32 @@
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+        h1{
+            font-size: 200px;
+        }
+        body{
+            background-color: black;
+            background: url("{% static 'BGofWebsite.jpg' %}") 10% no-repeat ;
+            background-size: cover;
+            -webkit-text-fill-color: aliceblue;
+        }
+    </style>
+    <h1>Welcome</h1>
+    <h2>We have 
+        <ol>
+            <li>
+                <a href="{% url 'home' %}">Home</a>
+            </li>
+            <li>Projects</li>
+            <li>Scotopia</li>
+        </ol>
+    </h2>
+</body>
+</html>
