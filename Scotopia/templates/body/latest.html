@@ -1,0 +1,41 @@
+<style>
+    #t1,#t2,#t3{
+        height: 60px;
+        width: 120px;
+    }
+    #sc2tr{
+        height: 60px;
+    }
+    #sc2tr:nth-child(odd){
+        background-color: rgb(57, 54, 70);
+    }
+</style>
+
+<table>
+    <thead>
+        <th id="t1">
+            ID
+        </th>
+        <th id="t2">
+            Name
+        </th>
+        <th id="t3">
+            Auther
+        </th>
+    </thead>
+    <tbody>
+        {% for da in data_latest %}
+        <tr id="sc2tr">
+            <td>
+                {{ da.1 }}
+            </td>
+            <td>
+                {{ da.0 }}
+            </td>
+            <td>
+                {{ da.2 }}
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
