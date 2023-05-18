@@ -1,140 +1,104 @@
 {% load static %}
 
 <style>
+/* 
     #forIMG{
         display: grid;
         grid-template-rows: 1fr 30fr;
         background-color: rgb(57, 72, 103);
         height: 440px;
-        padding-left: 40px;
-        /* padding-top: 20px; */
-        margin-top: -30px;
-        border-bottom: 7px solid black;
-        border-bottom-right-radius: 80px;
-        border-bottom-left-radius: 80px;
-        margin-left: 100px;
     }
     #forIMG img{
         grid-row: 2;
         max-width: 330px;
-        /* border: 2px dotted sienna; */
-        border-bottom-left-radius: 20%;
-        border-bottom-right-radius: 20%;
+    } */
+    #forContent{
+        grid-row: 1;
+        -webkit-text-fill-color: rgb(241, 246, 249);
+        /* margin-left: 35%; */
+        height: 500px;
+        width: 800px;
+        border-start-end-radius: 20%;
+        /* border-top-right-radius: 5%; */
+        /* border-bottom-right-radius: 5%; */
+        /* background-color: darkslategray; */
+    }
+    #forContent-A{
+        margin-left: 300px;
+        width: 600px;
+        margin-top: 150px;
+        font-family: every day,sans-serif;
+        line-height: 66px;
+        font-size: 3em;
+        font-weight: 900;
+        height: 150px;
+        box-shadow: 10px 0px 0px black;
     }
     #forContent{
-        -webkit-text-fill-color: rgb(241, 246, 249);
-        margin-top: 30px;
-        height: 500px;
-        width: 700px;
-        margin-left: 150px;
-        border-bottom: 10px solid rgb(14, 18, 26) ;
-        background-color: rgb(57, 72, 103);
-        border-bottom-left-radius: 20%;
-        border-bottom-right-radius: 20%;
+            /* background-color: rgb(23, 29, 41); */
+            /* background-color: transparent; */
     }
-    #forContent-name{
-        margin-left: 50px;
-        margin-top: 40px;
-        height: 60px;
-        width: 600px;
-        /* border-radius: 50px; */
-        background-color: rgb(14, 18, 26);
-        display: grid;
+    #forContent-A{
+        /* background-color: rgb(69, 69, 69); */
     }
-    #forContent-name-name{
-        font-size: 30px;
-        margin-top: 10px;
-        margin-left: 200px;
-        background-color: transparent;
+    #forContent-B{
+        /* background-color: rgb(153, 25, 25); */
     }
-    #forContent-content{
-        /* font-family: sans-serif; */
-        font-family: cursive;
-        font-style: italic;
+    #forContent-B{  
         margin-top: 20px;
-        margin-left: 50px;
-        border-bottom-right-radius: 80px;
-        border-bottom-left-radius: 80px;
-        background-color: rgb(14, 18, 26);
-        height: 340px;
-        width: 600px;
-        display: grid;
+        font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        font-style: italic;
+        -webkit-text-fill-color: rgb(189, 187, 187);
+        margin-left: 300px;
+        height: 200px;
+        width: 700px;
+        font-size: .9em;
+        font-weight: 100;
+        line-height: 25px;
     }
-    #forContent-content-content-A,#forContent-content-content-B{
-        padding-left: 20px;
-        line-height: 40px;
-        height: 300px;
-        margin-top: 10px;
-        margin-left: 10px;
-        width: 580px;
+    #forIMG{
+        height: 800px;
+        width: auto;
+        /* background-color: aquamarine; */
+        opacity: .35 ;
     }
-    #forContent-content-content-B{
-        opacity: 0;
-    }
-    th,td{
-        /* width: 100px; */
+    #imgprf{
+        margin-top: -20px;
+        margin-left:100px;
+        border-top-right-radius: 30%;
+        border-bottom-left-radius: 60%;
+        max-width: 500px;
     }
 </style>
 
-<script>
-
-    scriptA = "\"Hii (^O^), I'm a college sophmore pursuing computer science and engineering. <br> I like to work on webProjects/WebApps/WevDev what have you <br> I'm more interested in the Inner workings of structures and organisations, like a hidden works and trade secrets jk (^.^) <br> In web dev it would be the backend ,deployment and maintainance parts. I also have good handle on front end. \"<br>"
-    scriptB = "<table><thead><th>Personals</th><th>Skills</th></thead><tbody><tr><td><ul><li>Age : 20</li><li>Discipline : CSE</li><li>College: SMVIT (VTU)</li></ul></td><td><ul><li>HTML/ CSS/ JS</li><li>Python/ Django</li><li>Java/ C/ C++</li></td></tr></ul></tbody></table>"
-    function makeinteresting(){
-        // document.querySelector(".bio").style.backgroundImage = "url('{% static 'merced-river.jpg' %}')";
-        // document.querySelector(".bio").style.backgroundSize = "contain";
-        // document.querySelector(".bio").style.-webkit-transition: background-image 0.2s ease-in-out;
-        // document.querySelector(".bio").style.transition = " background-image 100ms";
-
-        document.querySelector("#forIMG").style.marginTop = "30px";
-        document.querySelector("#forContent").style.marginTop = "0px";
-        document.querySelector("#forIMG").style.transition = "300ms";
-        document.querySelector("#forContent").style.transition = "300ms";
-
-        // document.querySelector("#forContent-content-content-A").style.opacity = "0";
-        // document.querySelector("#forContent-content-content-B").style.opacity = "1";
-        document.querySelector("#forContent-content-content-A").style.fontFamily = "Ariel"; 
-        document.querySelector("#forContent-content-content-A").style.fontStyle = "italic"; 
-        document.querySelector("#forContent-content-content-A").innerHTML = scriptB;
-        document.querySelector("#forContent-content-content-A").style.transition = "300ms";
-        // document.querySelector("#forContent-content-content-B").style.transition = "300ms";
-        
-    }
-
-    function makeboring(){
-        document.querySelector("#forIMG").style.marginTop = "-30px";
-        document.querySelector("#forContent").style.marginTop = "30px";
-        document.querySelector("#forIMG").style.transition = "300ms";
-        document.querySelector("#forContent").style.transition = "300ms";
-
-        
-        document.querySelector("#forContent-content-content-A").style.opacity = "1";
-        document.querySelector("#forContent-content-content-A").innerHTML = scriptA;
-        document.querySelector("#forContent-content-content-A").style.fontFamily = "cursive"; 
-        // document.querySelector("#forContent-content-content-B").style.opacity = "0";
-        document.querySelector("#forContent-content-content-A").style.transition = "300ms";
-        // document.querySelector("#forContent-content-content-B").style.transition = "300ms";
-    }
-
-</script>
-
-<div id="forIMG" onmouseover="makeinteresting()" onmouseout="makeboring()">
-    <!-- <img src="{% static 'JennieKim.jpg' %}" alt=""> -->
-    <!-- <img src="{% static 'me_and_manisha.jpg' %}" alt=""> -->
-    <img src="{% static 'Risotto_Nero.jpg' %}" alt="">
-</div>
-<div id="forContent" onmouseover="makeinteresting()" onmouseout="makeboring()">
-    <div id="forContent-name">
-        <div id="forContent-name-name">
-            RAHUL  JANGRA    
+    <!-- scriptA = "\"Hii (^O^), I'm a college sophmore pursuing computer science and engineering. <br> I like to work on webProjects/WebApps/WevDev what have you <br> I'm more interested in the Inner workings of structures and organisations, like a hidden works and trade secrets jk (^.^) <br> In web dev it would be the backend ,deployment and maintainance parts. I also have good handle on front end. \"<br>"
+    scriptB = "<table><thead><th>Personals</th><th>Skills</th></thead><tbody><tr><td><ul><li>Age : 20</li><li>Discipline : CSE</li><li>College: SMVIT (VTU)</li></ul></td><td><ul><li>HTML/ CSS/ JS</li><li>Python/ Django</li><li>Java/ C/ C++</li></td></tr></ul></tbody></table>" -->
+    
+    <div id="forIMG">
+        <!-- <img id="imgprf" src="{% static 'JennieKim.jpg' %}" alt=""> -->
+        <!-- <img src="{% static 'BGofWebsite.jpg' %}" style="   margin-top: 100px;
+                                                            margin-left:-120px;
+                                                            border-top-right-radius: 0%;
+                                                            border-bottom-left-radius: 50%;
+                                                            max-height: 400px;" alt=""> -->
+        <!-- <img id="imgprf" src="{% static 'JennieKim.jpg' %}" alt=""> -->
+        <!-- <img id="imgprf" src="{% static 'me_and_manisha.jpg' %}" alt=""> -->
+        <!-- <img id="imgprf" src="{% static 'Risotto_Nero.jpg' %}" alt=""> -->
+        <img id="imgprf" src="{% static 'me_ice.jpg' %}" alt="">
+        <!-- <img id="imgprf" src="{% static 'me_ice2.jpg' %}" alt=""> -->
+    </div>  
+<div id="forContent">
+    <div id="forContent-A">
+        <div id="forContent-A-A">
+            Hii <div style="display: inline-block;font-size: 80;-webkit-text-fill-color: aquamarine;text-shadow: 2px 2px 30px rgb(255, 255, 255);">(. ❛ ᴗ ❛.)</div>, I'm a college sophmore . 
         </div>
     </div>
-    <div id="forContent-content">
-        <div id="forContent-content-content-A">
-            "Hii (^O^), I'm a college sophmore pursuing computer science and engineering. <br>
-            I like to work on webProjects/WebApps/WevDev what have you <br>
-            I'm more interested in the Inner workings of structures and organisations, like a hidden works and trade secrets jk (^.^) <br>
-            In web dev it would be the backend ,deployment and maintainance parts. I also have good handle on front end. "<br>
+    <div id="forContent-B">
+        <div id="forContent-B-A">
+            <br>
+            "I like to work on webProjects/WebApps/WevDev what have you 
+            I'm more interested in the Inner workings of structures and organisations, like a hidden works and trade secrets jk (^.^) 
+            In web dev it would be the backend ,deployment and maintainance parts. I also have good handle on front end."
         </div>
         <!-- <div id="forContent-content-content-B">
             <table>
