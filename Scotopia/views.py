@@ -1,27 +1,26 @@
 from django.shortcuts import render
 from datetime import datetime
 from .models import Scotops,Tags
-from .data import like as lk
 # Create your views here.
 import os
 
-data = [
-    [1,"15-05-2023","Idea test One",1001,["first","non-complete"],"Idiot A++",21],
-    [2,"15-05-2023","Idea test One",1002,["first","non-complete"],"Idiot A+",5],
-    [3,"15-05-2023","Idea test One",1003,["first","non-complete"],"Idiot B+",4],
-    [4,"15-05-2023","Idea test One",1004,["first","non-complete"],"Idiot B-",5],
-    [5,"15-05-2023","Idea test One",1005,["first","non-complete"],"Idiot C+",2],
-    [6,"15-05-2023","Idea test One",1006,["first","non-complete"],"Idiot C-",3],
-    [7,"15-05-2023","Idea test One",1007,["first","non-complete"],"Idiot D+",2],
-    [8,"15-05-2023","Idea test One",1008,["first","non-complete"],"Idiot D-",4]
-]
+# data = [
+#     [1,"15-05-2023","Idea test One",1001,["first","non-complete"],"Idiot A++",21],
+#     [2,"15-05-2023","Idea test One",1002,["first","non-complete"],"Idiot A+",5],
+#     [3,"15-05-2023","Idea test One",1003,["first","non-complete"],"Idiot B+",4],
+#     [4,"15-05-2023","Idea test One",1004,["first","non-complete"],"Idiot B-",5],
+#     [5,"15-05-2023","Idea test One",1005,["first","non-complete"],"Idiot C+",2],
+#     [6,"15-05-2023","Idea test One",1006,["first","non-complete"],"Idiot C-",3],
+#     [7,"15-05-2023","Idea test One",1007,["first","non-complete"],"Idiot D+",2],
+#     [8,"15-05-2023","Idea test One",1008,["first","non-complete"],"Idiot D-",4]
+# ]
 
 
-def openandwrite():
-    lke = open('C:\\Users\\rjdis\\OneDrive\\Documents\\GitHub\\WebSites\\Scotopia\\data.py','r')
-    likes=""
-    exec(lke.readline())
-    print(likes)
+# def openandwrite():
+#     lke = open('C:\\Users\\rjdis\\OneDrive\\Documents\\GitHub\\WebSites\\Scotopia\\data.py','r')
+#     likes=""
+#     exec(lke.readline())
+#     print(likes)
 
     # lk = open('C:\\Users\\rjdis\\OneDrive\\Documents\\GitHub\\WebSites\\Scotopia\\data.py','w')
     # lk.write(like + "like = {'4043':23}")
@@ -48,27 +47,18 @@ def openandwrite():
 #   b) If not then dummy entrys are available in a list of lists in a variable data
 def getdetailbyID(n):
     print(n)
-    try:
-        obj = Scotops.objects.get(scoto_id=int(n))
+    obj = Scotops.objects.get(scoto_id=int(n))
+    print("=====================================================")
+    sc_id = n
+    sc_date = obj.scoto_datetime
+    sc_name = obj.scoto_name
+    sc_tags = ["empty"]
+    print(obj.scoto_tag)
+    sc_auther = obj.scoto_auther.first().__str__()
+    print(obj.scoto_auther.all().__str__())
+    sc_likes = 1
         
-        print("=====================================================")
-        sc_id = n
-        sc_date = obj.scoto_datetime
-        sc_name = obj.scoto_name
-        sc_tags = ["empty"]
-        print(obj.scoto_tag)
-        sc_auther = obj.scoto_auther
-        sc_likes = 1
-        # sc_likes = lk[n]
-        
-    except:
-        index = int(n)- 1001
-        print(index)
-        sc_date = data[index][1]
-        sc_name = data[index][2]
-        sc_tags = data[index][4]
-        sc_auther = data[index][5]
-        sc_likes = lk[n]
+    
     return [str(sc_date)[0:10],sc_name,sc_tags,sc_auther,sc_likes]
 
 
@@ -79,7 +69,7 @@ def getdetailbyID(n):
 #   this funtion return a list of list where the later list contains details for most favourite entries
 # DUring each run of the for loop a new list will be set and append to final list 
 def createRanksEntries():
-    s = sorted(lk.items(), key =lambda x: x[1],reverse=True)
+    s = Scotops.objects.only('scoto_id')
     ScotoEntryList = []
     rank = 1
     EntryList = []
@@ -87,14 +77,16 @@ def createRanksEntries():
 
 
     for i in range(n):
-        De = getdetailbyID(s[i][0])
-        EntryList.append(rank) # rank
-        EntryList.append(De[0]) # date
-        EntryList.append(De[1]) # name
-        EntryList.append(s[i][0]) #id
-        EntryList.append(De[2]) # tags
-        EntryList.append(De[3]) #auther
-        EntryList.append(s[i][1]) #likes
+        De = getdetailbyID(s[i].scoto_id)
+        EntryList.append(rank) # rank           0
+        EntryList.append(De[0]) # date          1
+        EntryList.append(De[1]) # name          2
+        EntryList.append(s[i].scoto_id) #id     3
+        EntryList.append(De[2]) # tags          4
+        EntryList.append(De[3]) #auther         5
+        EntryList.append(s[i].likes()) #likes   6
+        EntryList.append(s[i].image.url)#image  7
+        EntryList.append(s[i].scoto_idea_brief)#8
         ScotoEntryList.append(EntryList) 
         EntryList = []
         rank+=1
@@ -139,7 +131,6 @@ def createLatestEntries():
 #   This funtion creates two lists of entries A: by rank B:latest ones
 #   Then loads the main Scoto page
 def scoto(request):
-    openandwrite()
     A = createRanksEntries()
     B = createLatestEntries()
     return render(request, 'Scotopia.html',{
@@ -152,18 +143,7 @@ def scoto(request):
 #==================================================================================================================================
 #==================================================================================================================================
 # Load a general page
-def idea(request,page_id):
-    try:
-        data = Scotops.objects.get(scoto_id=page_id)
-        return render(request, "Idea.html",{
-            "iid":data.scoto_id,
-            "iname":data.scoto_name,
-            "iidea":data.scoto_idea_brief,
-            "icont":data.scoto_idea_details,
-            "iauther":data.scoto_auther,
-            "idate":data.scoto_datetime,
-            "itags":data.scoto_tag,
-            "ilikes":lk[str(data.scoto_id)]
-        })
-    except :
-        pass
+def Add(request):
+    return render(request, "addPage.html")
+
+

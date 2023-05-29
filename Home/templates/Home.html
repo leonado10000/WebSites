@@ -17,17 +17,18 @@
             color:         rgb(33, 42, 62);
             color:         rgb(155, 164, 181);
         }
-        #top{
-            background-color: rgb(57, 72, 103);
+        body{
+            background-color: black;
+        }
+        .bio{
+            /* background-color: rgb(38, 48, 71) ; */
         }
         #middle{
             height: 1400px;
-            padding-top: 120px;
-            -webkit-text-fill-color: black;
-            background-color: rgb(241, 246, 249);
+            -webkit-text-fill-color:wheat;
+            background-color: black;
         }
     </style>
-    <div id="top">{% include 'portfolio\topbar.html' %}</div>
     <div id="middle">
             {% include 'portfolio\content.html' %}
     </div>
@@ -37,5 +38,7 @@
         started on 12/05/2023
         By Aki
     </div>
+    
+    <div id="top">{% include 'portfolio\topbar.html' %}</div>
 </body>
 </html>
