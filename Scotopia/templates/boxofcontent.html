@@ -1,0 +1,81 @@
+{% load static %}
+
+<style>
+    #postbox{
+        background-color: rgba(100, 148, 237, 0.203);
+        height: 200px;
+        -webkit-text-fill-color: antiquewhite;
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+    }
+    img{
+        height: 200px;
+    }
+    #postbox-text{
+        display: grid;
+        grid-template-rows: 1fr 2fr 1fr;
+    }
+    #pbt-head{
+        height: 50px;
+        display: grid;
+        grid-template-columns: 3fr 2fr;
+    }
+    #pbt-body{
+        height: 100px;
+    }
+    #pbt-foot{
+        height: 50px;
+    }
+    /* #pbt-foot div{
+        display: inline-block;
+    } */
+    #pbt-hh-name{
+        margin-top: 5px;
+        height: 30px;
+        font-size: 20px;
+        margin-left: 10px;
+    }
+    #pbt-hh-auther{
+        height: 15px;
+        font-size: 12px;
+    }
+    #pbt-h-date{
+        font-size: 12px;
+        margin-top: 30px;
+    }
+    #pbt-foot{
+        font-size: 12px;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+    #pbt-foot div{
+        margin-top: 10px;
+        margin-left: 15px;
+    }
+
+</style>
+
+<div id="postbox">
+    <div id="postbox-text">
+        <div id="pbt-head">
+            <div id="pbt-head-head">
+                <div id="pbt-hh-name">Name</div>
+                <div id="pbt-hh-auther">Auther</div>
+            </div>
+            <div id="pbt-h-date">Upload date</div>
+        </div>
+        <div id="pbt-body">
+            <div>Brief</div>
+        </div>
+        <div id="pbt-foot">
+            <div id="pbt-f-like">Likes</div>
+            <div id="pbt-f-comment">Comments</div>
+            <div id="pbt-f-share">share</div>
+        </div>
+    </div>
+    <div id="postbox-image">
+        <img src="{% static 'Yorsy.jpg' %}" alt="">
+    </div>
+</div>
+
+
