@@ -17,3 +17,6 @@ def mainPage(request):
     return render(request, 'App.html', {
         "data":data
     })
+
+def addPage(request):
+    return render(request, "addPage.html")

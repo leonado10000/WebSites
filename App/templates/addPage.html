@@ -1,3 +1,5 @@
+{% load static %}
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -5,42 +7,351 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add Page</title>
 
-    <h1>Add Page</h1>
+    <button id="sidemenu" style="display: inline-block;" onclick="sidemenu()">#</button>
+    <h1 style="-webkit-text-fill-color: aliceblue;text-align: center;width: 50%;margin: 0;display: inline-block;margin: 40px;margin-top: 10px;">Add Page</h1>
 </head>
 <body>
+    <script>
+        i = 0;
+        function sidemenu(){
+            if (i==0){
+                document.querySelectorAll("#postbox").forEach((k)=>{
+                    // k.style.display = "none";
+                    k.style.width = "0px";
+                    k.style.transition = "400ms";
+                })
+                i = 1;
+                document.querySelector("body").style.height = "90%";
+                document.querySelector("#sidemenu-box").style.width = "97%";
+                document.querySelector("#sidemenu-box").style.transition = "400ms";
+            }
+            else{
+                document.querySelectorAll("#postbox").forEach((k)=>{
+                    // k.style.display = "grid";
+                    k.style.width = "100%";
+                    k.style.transition = "400ms";
+                })
+                i = 0;
+                document.querySelector("body").style.height = "90%";
+                document.querySelector("#sidemenu-box").style.width = "0%";
+                document.querySelector("#sidemenu-box").style.transition = "250ms";
+            }
+        }
+
+    </script>
+    <style>
+        #sidemenu{
+            height: 50px;
+            width: 70px;
+        }
+    </style>
+
+    <style>
+        #sb-a,#sb-b,#sb-c{
+            margin-top: 50px;
+            margin-left: 20%;
+            height: 70px;
+            width: 250px;
+            border: 0px;
+
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            font-weight: 400;
+            font-size: 20px;
+        }
+        #sidemenu-box{
+            overflow:hidden;
+            background-color:teal;
+            position: absolute;
+            top: 80px;
+            display: grid;
+            height: 88%;
+            width: 0%;
+            grid-template-rows: 1fr 1fr 1fr 3fr;
+        }
+    </style>
+    <script>
+        function runto(n){
+            if (n==1){
+                return window.location.replace("{% url 'mainPage' %}")
+            }
+            else if (n==2){
+                return window.location.replace("{% url 'index' %}")
+            }
+            else if (n==3){
+                return window.location.replace("{% url 'home' %}")
+            } 
+        }
+    </script>
+    <div id="sidemenu-box">
+        <button id="sb-a" onclick="runto(1)">main Page</button>
+        <button id="sb-b" onclick="runto(2)">Home</button>
+        <button id="sb-c" onclick="runto(3)">About me</button>
+    </div>
+
+    <style>
+        body{
+            background-color: rgb(0, 33, 33);
+        }
+        #tgl-btn{
+            background-color: lightseagreen;
+            height: 80px;
+            width: 100%;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            
+        }
+        #tggl{
+            margin-top: 20px;
+            margin-left: 40px;
+            border: 0px;
+            height: 40px;
+            width: 120px;
+        }
+        .field{
+            margin-top: 15px;
+            height: 60px;
+            background-color: rgb(1, 104, 104);
+            display: grid;
+            grid-template-columns: 3fr 7fr;
+            border-radius: 20px;
+        }
+        span{
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-weight: 600;
+            font-size: 18px;
+            margin-top: 10px;
+            -webkit-text-fill-color: antiquewhite;
+            /* background-color: rgb(0, 74, 74); */
+            text-align: center;
+            padding-top: 6px;
+        }
+        input[type=text],input[type=datetime],input[type=file]{
+            font-size: 20px;
+            margin-top: 8px;
+            height: 40px;
+            width: 95%;
+            border: 0px;
+            border-radius: 10px;
+        }
+    </style>
+    <div id="tgl-btn">
+        <script>
+            function tgl(n){
+                if (n==1){
+                    document.querySelector("form").style.width = "95%";
+                    document.querySelector("#preview-box").style.width = "0%";
+                }
+                else{
+                    document.querySelector("form").style.width = "0%";
+                    document.querySelector("#preview-box").style.width = "95%";
+                }
+            }
+        </script>
+        <button id="tggl" onclick="tgl(1)">Edit</button>
+        <button id="tggl" onclick="tgl(2)">Preview</button>
+    </div>
 
     <form action="" method="post">
-        <div>
+        <div class="field">
             <span>Enter Name</span>
             <input type="text" name="Name">
         </div>
-        <div>
+        <div class="field">
             <span>Enter date</span>
             <input type="datetime" name="date">
         </div>
-        <div>
-            <span>Enter Brief Idea</span>
+        <div class="field">
+            <span>Brief Idea</span>
             <input type="text" name="Brief">
         </div>
-        <div>
+        <div class="field">
             <span>Auther</span>
             <input type="text" name="Auther">
         </div>
-        <div>
+        <div class="field">
             <span>Category</span>
             <input type="text" name="Category">    
         </div>
-        <div>
+        <div class="field">
             <span>Enter Tags</span>
             <input type="text" name="Tags">
         </div>
-        <div>
+        <div class="field" style="grid-template-columns: 1fr 2fr;">
             <span>Upload Image</span>
             <input type="file" name="Image">
         </div> 
 
         <input type="submit">
     </form>
+
+    <style>
+        form{
+            overflow: hidden;
+            transition: 200ms;
+        }
+    </style>
+
+
+        <script>
+
+            addEventListener("DOMContentLoaded", ()=>{
+                document.querySelectorAll("#pbt-h-name").forEach( (k)=>{
+                    k.innerHTML = k.innerHTML.toUpperCase();
+                }) 
+            
+                document.querySelectorAll("#pbi-img").forEach( function(k) {
+                    console.log("todays")
+                    if (k.clientHeight <= 250){
+                        console.log(k)
+                        k.style.maxWidth = "350px"
+                        k.style.marginTop = "20px";
+                        k.style.marginLeft = "10px";
+                    }
+                    else{
+                        k.style.marginLeft = "-35px"
+                    }
+                })
+            })
+        
+        </script>
+        
+        <style>
+            #preview-box{
+                width: 0%;
+                overflow: hidden;
+                transition: 300ms;
+                height: 80%;
+                position: absolute;
+                top: 170px;
+                right: 10;
+            }
+            #postbox{
+                width: 100%;
+                border-radius: 20px;
+                margin-top: 25px;
+                /* background-image: linear-gradient(110deg, black 53%, white 53%); */
+                background-color: rgb(255, 255, 255);
+                height: 550px;
+                -webkit-text-fill-color: black;
+                display: grid;
+                grid-template-rows: 4fr 9fr 5fr;
+            }
+        
+            
+            #postbox-head{
+                display: grid;
+                grid-template-rows: 1fr 3fr;
+                height: 100px;
+            }
+        
+            #pbt-auther{
+                font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+                font-weight: 290;
+                padding-top: 10px;
+                /* margin-top: 10px; */
+                margin-left: 25px;
+                /* background-color: violet; */
+                height: 10px;
+            }
+            #pbt-head{
+                height: 80px;
+                display: grid;
+                grid-template-columns: 3fr 1fr;
+            }
+            #pbt-h-name{
+                -webkit-text-fill-color: rgb(0, 0, 0);
+                padding-top: 20px;
+                padding-left: 15px;
+                font-weight: 1000;
+                font-family:Arial, Helvetica, sans-serif;
+                /* background-color: brown; */
+                height: 80px;
+                font-size: 29px;
+            }
+            #pbt-h-date{
+                padding-right: 5px;
+                padding-left: 3px;
+                text-align: right;
+                /* background-color: blueviolet; */
+                font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                padding-top: 80px;
+                /* font-weight: 300; */
+                font-size: 15px;
+            }
+        
+        
+            img{
+                border-radius: 8%;
+                max-height: 350px;
+                max-width: 300px;
+            }
+            #postbox-image{
+                overflow:hidden;
+                width: 100%;
+                text-align: center;
+            }
+        
+        
+            #pbt-foot{
+                display: grid;
+                grid-template-rows: 2fr 1fr;
+            }
+            #pbt-f-body{
+                /* background-color: darkcyan; */
+                border-radius: 10%;
+                height: 80%;
+                text-align:end;
+                padding: 3%;
+                padding-top: 7%;
+                font-weight: 700;
+                font-family: 'Courier New', Courier, monospace;
+            }
+            #pbt-ff{
+                display: grid;
+                grid-template-columns: 1fr 1fr 1fr 2fr;
+            }
+            #pbt-f-like,#pbt-f-comment,#pbt-f-share{
+                margin-top: 5%;
+                margin-left: 20px;
+                height: 80%;
+                border-radius: 50%;
+                font-size: 11px;
+            }
+            #pbt-f-comment{
+                width: 70px;
+            }
+        </style>
+        <div id="preview-box" >
+        <div id="postbox">
+            
+            <div id="postbox-head">
+                <div id="pbt-auther">By Khiladi 786</div>
+                <div id="pbt-head">
+                    <div id="pbt-h-name">one step to one thousand</div>
+                    <div id="pbt-h-date">30 November <br> 2023</div>
+                </div>
+            </div>
+        
+            <div id="postbox-image">
+                <img id="pbi-img" src="{% static 'Yorsy.jpg' %}" alt="">
+            </div>
+        
+            <div id="pbt-foot">
+                <div id="pbt-f-body">
+                    <div>
+                        Brief: 
+                        New Ideas are a Mashuo of old thoughts of relevancy and strong feelings 
+                    </div>
+                </div>  
+                <div id="pbt-ff">
+                    <button id="pbt-f-like">Likes</button>
+                    <button id="pbt-f-comment">Comments</button>
+                    <button id="pbt-f-share">share</button>
+                </div>
+            </div>
+            
+        </div>
+    </div>
     
 </body>
 </html>
