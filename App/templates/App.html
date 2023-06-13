@@ -1,0 +1,149 @@
+{% load static %}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background-color: rgb(0, 0, 0);
+            height: 2000px;
+            margin-left: 0px;
+            margin-right: 0px;
+        }
+        #Title-box{
+            top: 0;
+            width: 99%;
+            position: fixed;
+            height: 70px;
+            font-family: cursive;
+            font-weight: 930;
+            display: grid;
+            grid-template-columns: 1fr 5fr;
+            font-style: italic;
+            background-color: rgba(255, 255, 255, 0.534);
+        }
+        #TB-icon-L{
+            display: inline-block;
+            /* background-color: gray; */
+        }
+        button{
+            height: 70px;
+            width: 60px;
+            font-size: 30px;
+            border: 0;
+        }
+        #TB-name{
+            /* background-color: aqua; */
+            margin-left: 20%;
+            width: 160px;
+            height: 70px;
+            font-size: 50px;
+        }
+        #img-box{
+            margin-top: 70px;
+            background-image: url("{% static 'ucla-campus-darkend.jpg' %}");
+            background-position: 85% 0%;
+            background-size: cover;
+            height: 50px;
+        }
+        #img-box-in{
+            font-weight: lighter;
+            font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            -webkit-text-fill-color: aliceblue;
+            font-size: 30px;
+        }
+    </style>
+
+</head>
+<body>
+
+    <div id="Title-box">
+        <div id="TB-icon-L">
+            <script>
+                i = 0;
+                function sidemenu(){
+                    if (i==0){
+                        document.querySelectorAll("#postbox").forEach((k)=>{
+                            // k.style.display = "none";
+                            k.style.width = "0px";
+                            k.style.transition = "400ms";
+                        })
+                        i = 1;
+                        document.querySelector("body").style.height = "90%";
+                        document.querySelector("#sidemenu-box").style.width = "100%";
+                        document.querySelector("#sidemenu-box").style.transition = "400ms";
+                    }
+                    else{
+                        document.querySelectorAll("#postbox").forEach((k)=>{
+                            // k.style.display = "grid";
+                            k.style.width = "100%";
+                            k.style.transition = "400ms";
+                        })
+                        i = 0;
+                        document.querySelector("body").style.height = "2000px";
+                        document.querySelector("#sidemenu-box").style.width = "0%";
+                        document.querySelector("#sidemenu-box").style.transition = "400ms";
+                    }
+                }
+        
+            </script>
+            <button onclick="sidemenu()">#</button>
+        </div>
+        <div id="TB-name">
+            Scotopia
+        </div>
+        <!-- <div id="TB">
+            icon
+        </div> -->
+    </div>
+
+    <div id="img-box">
+        <div id="img-box-in">
+            Hello Y'all
+        </div>
+    </div>
+    <style>
+        #sb-a,#sb-b,#sb-c{
+            margin-top: 50px;
+            margin-left: 20%;
+            height: 70px;
+            width: 250px;
+            border: 0px;
+        }
+        #sidemenu-box{
+            overflow:hidden;
+            background-color:rgb(37, 0, 40);
+            position: absolute;
+            top: 140px;
+            display: grid;
+            height: 85%;
+            width: 0%;
+            grid-template-rows: 1fr 1fr 1fr 3fr;
+        }
+    </style>
+    <script>
+        function runto(n){
+            if (n==1){
+                return window.location.replace("{% url 'add' %}")
+            }
+            else if (n==2){
+                return window.location.replace("{% url 'index' %}")
+            }
+            else if (n==3){
+                return window.location.replace("{% url 'home' %}")
+            } 
+        }
+    </script>
+    <div id="sidemenu-box">
+        <button id="sb-a" onclick="runto(1)">Add Page</button>
+        <button id="sb-b" onclick="runto(2)">Home</button>
+        <button id="sb-c" onclick="runto(3)">About me</button>
+    </div>   
+    {% include 'boc2.html' %}
+
+    
+</body>
+</html>
