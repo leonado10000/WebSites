@@ -34,6 +34,7 @@ ALLOWED_HOSTS = ['172.20.10.7','192.168.203.13','*','192.168.0.187']
 INSTALLED_APPS = [
     'Home',
     'App',
+    'django_extensions',
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",

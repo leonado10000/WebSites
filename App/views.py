@@ -6,10 +6,10 @@ def dummy(request):
 
 def getData():
     data = []    
-    for i in Post.objects.all():
-        tgs =  []
-        tempData = [i.P_id,i.title,i.auther,i.date,i.description,i.category,i.likes(),i.tages(),i.image.url]
-        data.append(tempData)
+    # for i in Granger.objects.all():
+    #     tgs =  []
+    #     tempData = [i.P_id,i.title,i.auther,i.date,i.description,i.category,i.likes(),i.tages(),i.image.url]
+    #     data.append(tempData)
     return data
 
 def mainPage(request):

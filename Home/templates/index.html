@@ -12,123 +12,75 @@
             font-size: 90px;
         }
         body{
+            background: url("{% static 'wild.jpg' %}") 10% ;
+            background-repeat:no-repeat;
+            background-size:cover;
+            /* background-position: 300px 100px; */
             background-color: black;
-            background: url("{% static 'BGofWebsite.jpg' %}") 10% no-repeat ;
-            background-size: cover;
             -webkit-text-fill-color: rgb(169, 212, 250);
             text-shadow: 3px 3px 5px black;
 
             display: grid;
-            grid-template-rows: 3fr 5fr;
+            grid-template-rows: 3fr 6fr;
         }
-        #body{
-            display: grid;
-            grid-template-columns: 1fr 2fr 4fr;
-        }
-        a{
-            -webkit-text-fill-color: rgb(255, 255, 255);
+        #hello{
+            height: 250px;
+            width: 300px;
+            background: url('static/hello.gif') 100% no-repeat;
+            background-size: contain;
         }
         #body-names{
-            grid-column: 2;
+            grid-row: 2;
+            display: grid;
+            grid-template-columns:  2fr 4fr 4fr 4fr 1fr;
         }
-        #body-datas{
-            border-radius: 40px;
-            padding: 20px;
-            margin-top: -50px;
-            margin-left: 150px;
-            height: 350px;
-            width: 600px;
-            grid-column: 3;
-            background-color: rgba(0, 0, 0, 0.474);
-            backdrop-filter: blur(5px);
-            box-shadow: 20px 20px 200px  snow;
+        a:visited{
+            -webkit-text-fill-color: blueviolet;
         }
         #body-names-name{
-            font-size: 20px;
-            border-radius: 20px ;
             text-align: center;
-            margin-top: 20px;
-            padding-top: 10px;
-            background-color: rgba(0, 0, 0, 0.378);
-            box-shadow: 10px 10px 10px rgba(255, 255, 224, 0.558);
-            backdrop-filter: blur(20px);
-            height: 60px;
+            height: 400px;
+            width: 300px;
+            display: inline-block;
+            border-radius: 30px;
+            background-color: rgba(0, 0, 0, 0.568);
+
+            backdrop-filter: blur(2px);
+        }
+        .bnn2{
+            position: relative;
+            background: url('static/cyber.png') 10% no-repeat;
+            background-size: 170%;
+            height: 400px;
+        }
+        .bnn2:hover{
+            background-size: cover;
+            transition: 200ms;
+            font-size: 30px;
+            height: 450px;
+            filter: blur(2px);
+            width: 200px;
         }
     </style>
 
-    <script>
-        page1_data = "I've been drinking more alcohol everyday, did you check on me, may be we can be ....."
-        page2_data = "Solo leveling, BATE, and some more"
-        page3_data = "this season I've been enjoying heavenly delusion, been realizing the way to the world, It's not in the devices , it's with people <br>Understanding the way of life of diffrent people and their needs and preferences , empathizing with them , and controling those emotions , and using this as applications for different."
-
-        function page(n){
-            if (n==1){
-                document.querySelector("#body-datas-box").innerHTML = page1_data
-                document.querySelector("#body-datas-box").style.transition = "300ms"
-                document.querySelector(".bnn1").style.fontSize = "30px";
-                document.querySelector(".bnn1").style.boxShadow = "-10px 40px 50px rgba(255, 255, 224, 0.558)";
-                document.querySelector(".bnn1").style.backgroundColor = "rgba(255, 255, 224, 0.558)";
-                document.querySelector(".bnn1").style.transition = "300ms"
-            }
-            if (n==2){
-                document.querySelector("#body-datas-box").innerHTML = page2_data
-                document.querySelector("#body-datas-box").style.transition = "300ms"
-                document.querySelector(".bnn2").style.fontSize = "30px";
-                document.querySelector(".bnn2").style.fontSize = "30px";
-                document.querySelector(".bnn2").style.backgroundColor = "rgba(255, 255, 224, 0.558)";
-                document.querySelector(".bnn2").style.transition = "300ms"
-            }
-            if (n==3){
-                document.querySelector("#body-datas-box").innerHTML = page3_data
-                document.querySelector("#body-datas-box").style.transition = "300ms"
-                document.querySelector(".bnn3").style.fontSize = "30px";
-                document.querySelector(".bnn3").style.fontSize = "30px";
-                document.querySelector(".bnn3").style.backgroundColor = "rgba(255, 255, 224, 0.558)";
-                document.querySelector(".bnn3").style.transition = "300ms"
-            }
-        }
-        function pageno(n){
-            if (n==1){
-                document.querySelector(".bnn1").style.fontSize = "20px";
-                document.querySelector(".bnn1").style.backgroundColor = "rgba(0, 0, 0, 0.242)";
-                document.querySelector(".bnn1").style.transition = "100ms"
-            }
-            if (n==2){
-                document.querySelector(".bnn2").style.fontSize = "20px";
-                document.querySelector(".bnn2").style.backgroundColor = "rgba(0, 0, 0, 0.242)";
-                document.querySelector(".bnn2").style.transition = "100ms"
-            }
-            if (n==3){
-                document.querySelector(".bnn3").style.fontSize = "20px";
-                document.querySelector(".bnn3").style.backgroundColor = "rgba(0, 0, 0, 0.242)";
-                document.querySelector(".bnn3").style.transition = "100ms"
-            }
-        }
-    </script>
+    
 
     <div>
-        <h1>Welcome</h1>
+        <div id="hello"></div>
     </div>
-    <div id="body">
         <div id="body-names">
-            <h2>We have 
-                        <div onmouseover="page(1)" onmouseout="pageno(1)" id="body-names-name" class="bnn1">
-                            <a href="{% url 'home' %}">Home</a>
-                        </div>
+            <div></div>
+                    <div onmouseover="page(1)" onmouseout="pageno(1)" id="body-names-name" class="bnn1">
+                        <a href="{% url 'home' %}">Home</a>
+                        <!-- <img src="{% static 'spider-gwen-fan-art-by-youngjin-seo.webp' %}" alt=""> -->
+                    </div>
                 
-                        <div onmouseover="page(2)" onmouseout="pageno(2)" id="body-names-name" class="bnn2">
-                            <a href="{% url 'mainPage' %}">Scotopia</a>
-                        </div>
-                        <div onmouseover="page(3)" onmouseout="pageno(3)" id="body-names-name" class="bnn3">
-                            Projects
-                        </div>
-                    
-            </h2>
+                    <div onmouseover="page(2)" onmouseout="pageno(2)" id="body-names-name" class="bnn2">
+                        <a href="{% url 'mainPage' %}">Scotopia</a>
+                    </div>
+                    <div onmouseover="page(3)" onmouseout="pageno(3)" id="body-names-name" class="bnn3">
+                        Projects
+                    </div>
         </div>
-        <div id="body-datas">
-            <div id="body-datas-box">
-                Data XYZ</div>
-        </div>
-    </div>
 </body>
 </html>
